@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art Haven — Social Links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #f5efe3;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(195,152,76,0.05) 35px, rgba(195,152,76,0.05) 70px),
+        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(195,152,76,0.03) 35px, rgba(195,152,76,0.03) 70px),
+        radial-gradient(ellipse 600px 400px at 50% 0%, rgba(195,152,76,0.16) 0%, transparent 60%),
+        linear-gradient(135deg, #f7f2e8 0%, #efe7d6 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem 4rem;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-badge {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #fbf7ef 0%, #f5f0e8 100%);
+      border: 4px solid #C3984C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 
+        0 0 30px rgba(195,152,76,0.5),
+        inset 0 0 20px rgba(195,152,76,0.1),
+        0 12px 25px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-badge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+      pointer-events: none;
+      border-radius: 26px;
+    }
+
+    .logo-badge:hover {
+      transform: translateY(-5px);
+      border-color: #d4a460;
+      box-shadow: 
+        0 0 45px rgba(195,152,76,0.7),
+        inset 0 0 25px rgba(195,152,76,0.15),
+        0 16px 35px rgba(0,0,0,0.25);
+    }
+
+    .logo-badge svg { width: 110px; height: 110px; }
+    .logo-badge img { width: 110px; height: 110px; object-fit: contain; display: block; position: relative; z-index: 1; }
+    .logo-badge::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #C3984C, transparent);
+    }
+
+    .brand-name {
+      font-size: 44px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      margin-top: 1.5rem;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .brand-name .a { color: #b8860b; }
+    .brand-name .b { color: #2a2316; }
+
+    .brand-sub {
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.55em;
+      color: #9b8460;
+      text-transform: uppercase;
+      margin-top: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-sub i {
+      margin: 0 8px;
+      color: #C3984C;
+      font-size: 16px;
+    }
+
+    .accent-line {
+      width: 60px;
+      height: 2px;
+      background: #C3984C;
+      margin: 1.5rem 0 2rem;
+      box-shadow: 0 0 8px rgba(195,152,76,0.5);
+    }
+
+    .links { width: 100%; display: flex; flex-direction: column; gap: 14px; }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border: 1px solid rgba(195,152,76,0.18);
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+    }
+    .link-btn:hover {
+      background: #fdfaf3;
+      border-color: rgba(195,152,76,0.5);
+      transform: translateX(-4px);
+    }
+
+    .lb-chevron {
+      color: rgba(195,152,76,0.45);
+      font-size: 15px;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .link-btn:hover .lb-chevron { color: #C3984C; transform: translateX(-3px); }
+
+    .lb-name {
+      flex: 1;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: #2a2316;
+    }
+
+    .lb-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #C3984C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(195,152,76,0.35);
+    }
+    .lb-icon i { color: #fbf7ef; font-size: 17px; }
+
+    .social-icons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-icon-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #C3984C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fbf7ef;
+      font-size: 22px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px rgba(195,152,76,0.3);
+    }
+
+    .social-icon-btn:hover {
+      background: #b8860b;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(195,152,76,0.6);
+    }
+
+    .footer-line {
+      margin-top: 0.5rem;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: black;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+ <div class="logo-badge">
+      <img src="assets/Art%20Haven%20-%20Logo-02.png" alt="Art Haven logo" />
+    </div>
+
+    <div class="brand-name"><span class="a">ART</span><span class="b">HAVEN</span></div>
+    <div class="brand-sub">
+      <i class="fa-solid fa-couch"></i>
+      Home & Furniture
+      <i class="fa-solid fa-chair"></i>
+    </div>
+
+    <div class="accent-line"></div>
+
+    <div class="links">
+
+      <a class="link-btn" href="https://instagram.com/art_haven01" target="_blank" rel="noopener">
+        <i class="fa-solid fa-chevron-left lb-chevron"></i>
+        <span class="lb-name">Instagram</span>
+        <span class="lb-icon"><i class="fa-brands fa-instagram"></i></span>
+      </a>
+
+      <a class="link-btn" href="https://twitter.com/Art_Haven_" target="_blank" rel="noopener">
+        <i class="fa-solid fa-chevron-left lb-chevron"></i>
+        <span class="lb-name">Twitter</span>
+        <span class="lb-icon"><i class="fa-brands fa-twitter"></i></span>
+      </a>
+
+      <a class="link-btn" href="https://wa.me/966533686222" target="_blank" rel="noopener">
+        <i class="fa-solid fa-chevron-left lb-chevron"></i>
+        <span class="lb-name">WhatsApp</span>
+        <span class="lb-icon"><i class="fa-brands fa-whatsapp"></i></span>
+      </a>
+
+      <a class="link-btn" href="https://snapchat.com/add/art.haven" target="_blank" rel="noopener">
+        <i class="fa-solid fa-chevron-left lb-chevron"></i>
+        <span class="lb-name">Snapchat</span>
+        <span class="lb-icon"><i class="fa-brands fa-snapchat"></i></span>
+      </a>
+
+      <a class="link-btn" href="https://tiktok.com/@art.haven01" target="_blank" rel="noopener">
+        <i class="fa-solid fa-chevron-left lb-chevron"></i>
+        <span class="lb-name">TikTok</span>
+        <span class="lb-icon"><i class="fa-brands fa-tiktok"></i></span>
+      </a>
+
+      <a class="link-btn" href="https://store.art-haven.com/" target="_blank" rel="noopener">
+        <i class="fa-solid fa-chevron-left lb-chevron"></i>
+        <span class="lb-name">Website</span>
+        <span class="lb-icon"><i class="fa-solid fa-globe"></i></span>
+      </a>
+
+      <a class="link-btn" href="mailto:info@art-haven.com" target="_blank" rel="noopener">
+        <i class="fa-solid fa-chevron-left lb-chevron"></i>
+        <span class="lb-name">Email</span>
+        <span class="lb-icon"><i class="fa-regular fa-envelope"></i></span>
+      </a>
+
+    </div>
+
+    <div class="social-icons">
+      <a href="https://instagram.com/arthaven" target="_blank" rel="noopener" class="social-icon-btn" title="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://twitter.com/arthaven" target="_blank" rel="noopener" class="social-icon-btn" title="Twitter">
+        <i class="fa-brands fa-twitter"></i>
+      </a>
+      <a href="https://tiktok.com/@arthaven" target="_blank" rel="noopener" class="social-icon-btn" title="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+      <a href="https://wa.me/966533686222" target="_blank" rel="noopener" class="social-icon-btn" title="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+    </div>
+
+    <p class="footer-line">© 2026 Art Haven</p>
+
+  </div>
+</body>
+</html>
