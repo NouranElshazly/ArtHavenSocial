@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="icon" href="assets/Art%20Haven%20-%20icon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/Art%20Haven%20-%20icon.png" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -35,6 +37,21 @@
       font-family: 'Oswald', sans-serif;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
+      position: relative;
+    }
+
+    /* Tiled faint icon pattern using existing icon asset */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/Art%20Haven%20-%20LOGOicon2.svg');
+      background-repeat: repeat;
+      background-position: center top;
+      background-size: 160px 160px;
+      opacity: 0.06;
+      pointer-events: none;
+      mix-blend-mode: overlay;
     }
 
     .container {
