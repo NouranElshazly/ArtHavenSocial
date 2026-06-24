@@ -11,19 +11,30 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --olive: #243a2b;
+      --accent: #cea66e;
+      --accent-rgb: 206,166,110;
+      --beige-start: #E6D0AE;
+      --beige-end: #FBECDD;
+      --beige-start-rgb: 230,208,174;
+      --beige-end-rgb: 251,236,221;
+      --panel: linear-gradient(180deg,var(--beige-start),var(--beige-end));
+      --text: var(--beige-end);
+    }
+
     body {
       min-height: 100vh;
-      background: #f5efe3;
-      background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(195,152,76,0.05) 35px, rgba(195,152,76,0.05) 70px),
-        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(195,152,76,0.03) 35px, rgba(195,152,76,0.03) 70px),
-        radial-gradient(ellipse 600px 400px at 50% 0%, rgba(195,152,76,0.16) 0%, transparent 60%),
-        linear-gradient(135deg, #f7f2e8 0%, #efe7d6 100%);
+      /* olive base with a subtle silver overlay */
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)), var(--olive);
+      color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 3rem 1.5rem 4rem;
       font-family: 'Oswald', sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
     .container {
@@ -36,21 +47,17 @@
 
     .logo-badge {
       position: relative;
-      width: 200px;
-      height: 200px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #fbf7ef 0%, #f5f0e8 100%);
-      border: 4px solid #C3984C;
+      width: 180px;
+      height: 180px;
+      border-radius: 20px;
+      background: var(--panel);
+      border: 2px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 
-        0 0 30px rgba(195,152,76,0.5),
-        inset 0 0 20px rgba(195,152,76,0.1),
-        0 12px 25px rgba(0,0,0,0.15);
-      margin-bottom: 20px;
-      transition: all 0.4s ease;
-      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      margin-bottom: 18px;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
       overflow: hidden;
     }
 
@@ -67,12 +74,8 @@
     }
 
     .logo-badge:hover {
-      transform: translateY(-5px);
-      border-color: #d4a460;
-      box-shadow: 
-        0 0 45px rgba(195,152,76,0.7),
-        inset 0 0 25px rgba(195,152,76,0.15),
-        0 16px 35px rgba(0,0,0,0.25);
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.45);
     }
 
     .logo-badge svg { width: 110px; height: 110px; }
@@ -80,11 +83,12 @@
     .logo-badge::after {
       content: '';
       position: absolute;
-      bottom: -1px;
+      bottom: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, #C3984C, transparent);
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.9;
     }
 
     .brand-name {
@@ -95,14 +99,14 @@
       text-transform: uppercase;
       line-height: 1;
     }
-    .brand-name .a { color: #b8860b; }
-    .brand-name .b { color: #2a2316; }
+    .brand-name .a { color: var(--beige-end); }
+    .brand-name .b { color: var(--accent); }
 
     .brand-sub {
       font-size: 13px;
       font-weight: 300;
       letter-spacing: 0.55em;
-      color: #9b8460;
+      color: var(--beige-start);
       text-transform: uppercase;
       margin-top: 0.6rem;
       display: flex;
@@ -112,16 +116,16 @@
 
     .brand-sub i {
       margin: 0 8px;
-      color: #C3984C;
+      color: var(--accent);
       font-size: 16px;
     }
 
     .accent-line {
       width: 60px;
       height: 2px;
-      background: #C3984C;
+      background: var(--accent);
       margin: 1.5rem 0 2rem;
-      box-shadow: 0 0 8px rgba(195,152,76,0.5);
+      box-shadow: 0 0 8px rgba(var(--accent-rgb),0.18);
     }
 
     .links { width: 100%; display: flex; flex-direction: column; gap: 14px; }
@@ -130,25 +134,25 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #ffffff;
-      border: 1px solid rgba(195,152,76,0.18);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(var(--accent-rgb),0.12);
       border-radius: 8px;
-      padding: 14px 16px;
+      padding: 12px 16px;
       text-decoration: none;
-      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+      transition: background 0.22s ease, border-color 0.22s ease, transform 0.18s ease;
     }
     .link-btn:hover {
-      background: #fdfaf3;
-      border-color: rgba(195,152,76,0.5);
-      transform: translateX(-4px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(var(--accent-rgb),0.22);
+      transform: translateX(-3px);
     }
 
     .lb-chevron {
-      color: rgba(195,152,76,0.45);
+      color: rgba(var(--accent-rgb),0.35);
       font-size: 15px;
-      transition: color 0.2s, transform 0.2s;
+      transition: color 0.18s, transform 0.18s;
     }
-    .link-btn:hover .lb-chevron { color: #C3984C; transform: translateX(-3px); }
+    .link-btn:hover .lb-chevron { color: var(--accent); transform: translateX(-3px); }
 
     .lb-name {
       flex: 1;
@@ -156,65 +160,77 @@
       font-size: 18px;
       font-weight: 400;
       letter-spacing: 0.08em;
-      color: #2a2316;
+      color: var(--text);
     }
 
     .lb-icon {
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      background: #C3984C;
+      background: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 0 10px rgba(195,152,76,0.35);
+      box-shadow: 0 0 10px rgba(206,166,110,0.35);
     }
-    .lb-icon i { color: #fbf7ef; font-size: 17px; }
+    .lb-icon i { color: var(--olive); font-size: 17px; }
 
     .social-icons {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       justify-content: center;
       margin-top: 2.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .social-icon-btn {
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: #C3984C;
+      background: rgba(var(--beige-start-rgb),0.06);
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      color: #fbf7ef;
-      font-size: 22px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 12px rgba(195,152,76,0.3);
+      color: var(--beige-end);
+      font-size: 18px;
+      transition: transform 0.22s ease, background 0.22s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
     }
 
     .social-icon-btn:hover {
-      background: #b8860b;
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(195,152,76,0.6);
+      background: rgba(var(--accent-rgb),0.28);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.45);
     }
 
     .footer-line {
-      margin-top: 0.5rem;
+      margin-top: 0.8rem;
       font-size: 12px;
       font-weight: 300;
       letter-spacing: 0.3em;
-      color: black;
+      color: rgba(var(--beige-end-rgb),0.75);
       text-transform: uppercase;
+    }
+    
+    /* Gradient text using the brand palette */
+    .gradient-text,
+    .brand-name,
+    .lb-name,
+    .brand-sub,
+    .footer-line {
+      background: linear-gradient(90deg, var(--beige-start), var(--beige-end) 55%, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
   </style>
 </head>
 <body>
   <div class="container">
  <div class="logo-badge">
-      <img src="assets/Art%20Haven%20-%20Logo-02.png" alt="Art Haven logo" />
+      <img src="assets/Art%20haven%20lo-022(1).png" alt="Art Haven logo" />
     </div>
 
     <div class="brand-name"><span class="a">ART</span><span class="b">HAVEN</span></div>
